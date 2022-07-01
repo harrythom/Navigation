@@ -6,14 +6,13 @@
 #include <queue>
 #include "NavigationInterface.h"
 
-
 class Navigation : public NavigationInterface {
 
 public:
 
-    Navigation() {}
+    Navigation();
 
-    virtual ~Navigation() {}
+    virtual ~Navigation();
 
 
     virtual bool readNetwork(string _mapName);
@@ -23,6 +22,5 @@ public:
     virtual void printPath(queue<int> _path);
 
 };
-
 
 #endif
