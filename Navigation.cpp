@@ -83,13 +83,26 @@ queue<int> Navigation::computeShortestPath(int _startInd, int _endInd) {
         }
     }
 
+    bestPath = myPriorityQueue.top().path;
 
     return bestPath;
 }
 
 void Navigation::printPath(queue<int> _path) {
 
-    cout << "In print path..." << endl;
+    cout << "Printing best path..." << endl;
+
+    while (!_path.empty()) {
+        if (_path.size() > 1) {
+            cout << _path.front() << ", ";
+            _path.pop();
+        }
+        else {
+            cout << _path.front() << endl;
+            _path.pop();
+        }
+    }
+
 }
 
 
