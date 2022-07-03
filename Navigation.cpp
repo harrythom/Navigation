@@ -19,13 +19,35 @@ bool Navigation::readNetwork(string _mapName) {
     ifstream input;
     input.open(_mapName);
 
+    if (input.is_open()) {
+        int tempInt;
+        input >> numNodes;
+
+        cout << "numNodes = " << numNodes << endl;
+
+        for (int i = 0; i < numNodes; ++i) {
+            vector<int> tempVector;
+
+            for (int j = 0; j < numNodes; ++j) {
+                input >> tempInt;
+                tempVector.push_back(tempInt);
+            }
+            costMatrix.push_back(tempVector);
+        }
+
+        input.close();
+        return true;
+    }
+    else {
+
+        return false;
+    }
 }
 
 queue<int> Navigation::computeShortestPath(int _startInd, int _endInd) {
 
     cout << "In compute shortest path..." << endl;
-
-    queue<int> path;
+    queue<int> bestPath;
 
     //Step 1
     priority_queue <Node, vector<Node>, Node> myPriorityQueue;
@@ -39,21 +61,35 @@ queue<int> Navigation::computeShortestPath(int _startInd, int _endInd) {
     myPriorityQueue.push(n);
 
     //Step 4
+    while (myPriorityQueue.top().path.back() != _endInd) {
+        //Step 5
+        Node current = myPriorityQueue.top();
+        myPriorityQueue.pop();
 
-    while (myPriorityQueue.top() != ) {
+        //Step 6
+        int last = current.path.back();
 
+        //Step 7
+        for (int i = 0; i < numNodes; ++i) {
+            if (costMatrix.at(last).at(i) > 0) {
+                Node nn;
+                nn.cost = current.cost + costMatrix.at(last).at(i);
+                nn.path = current.path;
+                nn.path.push(i);
+
+                //Step 8
+                myPriorityQueue.push(nn);
+            }
+        }
     }
 
-    //Step 5
 
-
-    return path;
+    return bestPath;
 }
 
 void Navigation::printPath(queue<int> _path) {
 
     cout << "In print path..." << endl;
-
 }
 
 

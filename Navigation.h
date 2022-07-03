@@ -8,7 +8,6 @@
 #include <queue>
 #include "NavigationInterface.h"
 
-
 struct Node {
     int cost;
     queue<int> path;
