@@ -46,7 +46,8 @@ bool Navigation::readNetwork(string _mapName) {
 
 queue<int> Navigation::computeShortestPath(int _startInd, int _endInd) {
 
-    cout << "In compute shortest path..." << endl;
+    cout << "Computing the shortest path..." << endl;
+
     queue<int> bestPath;
 
     //Step 1
@@ -90,7 +91,7 @@ queue<int> Navigation::computeShortestPath(int _startInd, int _endInd) {
 
 void Navigation::printPath(queue<int> _path) {
 
-    cout << "Printing best path..." << endl;
+    cout << "Printing the shortest path..." << endl;
 
     while (!_path.empty()) {
         if (_path.size() > 1) {
@@ -102,5 +103,4 @@ void Navigation::printPath(queue<int> _path) {
             _path.pop();
         }
     }
-
 }
