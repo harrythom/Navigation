@@ -3,8 +3,21 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <vector>
 #include <queue>
 #include "NavigationInterface.h"
+
+
+struct Node {
+    int cost;
+    queue<int> path;
+
+    bool operator() (Node const& n1, Node const& n2) {
+        return n1.cost > n2.cost;
+    }
+};
+
 
 class Navigation : public NavigationInterface {
 
@@ -20,6 +33,11 @@ public:
     virtual queue<int> computeShortestPath(int _startInd, int _endInd);
 
     virtual void printPath(queue<int> _path);
+
+private:
+
+    vector <vector<int>> costMatrix;
+    int numNodes;
 
 };
 
