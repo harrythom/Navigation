@@ -3,13 +3,11 @@
 Navigation::Navigation() {
 
     cout << "In constructor..." << endl;
-
 }
 
 Navigation::~Navigation() {
 
     cout << "In destructor..." << endl;
-
 }
 
 bool Navigation::readNetwork(string _mapName) {

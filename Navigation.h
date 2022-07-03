@@ -14,7 +14,6 @@ struct Node {
     }
 };
 
-
 class Navigation : public NavigationInterface {
 
 public:
