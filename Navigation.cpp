@@ -104,6 +104,3 @@ void Navigation::printPath(queue<int> _path) {
     }
 
 }
-
-
-
